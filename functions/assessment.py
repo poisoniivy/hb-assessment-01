@@ -28,6 +28,7 @@ def is_hometown(town_name):
 #        returns the concatenation of the two names in one string.
 def full_name(first_name, last_name):
     """ Returns a string of someone's first and last names """
+
     return first_name + " " + last_name
 
 #    (c) Write a function that takes a home town, a first name, and a last name
@@ -36,10 +37,14 @@ def full_name(first_name, last_name):
 #        here', I'd like to visit 'town name here'!" depending on what the function
 #        from part (a) evaluates to.
 def intro(town_name, first_name, last_name):
+    """ Prints intro phrase given town, first and last names """
+
     if is_hometown(town_name):
-        print "Hi, {}, we're from the same place!".format(full_name(first_name, last_name))
+        print "Hi, {}, we're from the same place!".format(
+            full_name(first_name, last_name))
     else:
-        print "Hi {}, I'd like to visit {}!".format(full_name(first_name, last_name), town_name)
+        print "Hi {}, I'd like to visit {}!".format(
+            full_name(first_name, last_name), town_name)
 
 ###############################################################################
 
@@ -85,6 +90,8 @@ def is_berry(fruit):
     False
 
     """
+
+    # Checks to see if fruit is a type of berry and then returns boolean
     if fruit == "strawberry" or fruit == "rasberry" or fruit == "blackberry":
         return True
     else:
@@ -117,7 +124,7 @@ def append_to_list(lst, num):
     """
     new_list = lst[:]
     new_list.append(num)
-    # new_list[len(new_list):] = [num] --> 2nd option
+    # new_list[len(new_list):] = [num] --> 2nd option without append method
 
     return new_list
 
@@ -144,8 +151,10 @@ def calculate_price(base_price, state, tax_rate=0.05):
     135.3
 
     """
+    # first calculate total with tax
     total = float(base_price) + float(base_price * tax_rate)
 
+    # if state is CA, PA, or MA, add total to the correct state fee
     if state == "CA":
         total = total * 1.03
     elif state == "PA":
@@ -168,6 +177,14 @@ def calculate_price(base_price, state, tax_rate=0.05):
 #        write a Python function that takes in an arbitrary number of arguments.
 
 def create_list(*args):
+    """Returns a list consisting all the arguments that are given.
+
+    >>> create_list(1, 2, 3, 4, 5)
+    [1, 2, 3, 4, 5]
+
+    """
+
+    # Creating a list from the tuple of args
     return list(args)
 
 #    (b) Make a new function with a nested inner function.
@@ -178,20 +195,23 @@ def create_list(*args):
 #        at index 0 and the result of the inner function at index 1.
 
 def triple_print(word):
+    """Returns a tuple consisting the word and the word multiplied by 3.
+
+    >>> triple_print("Balloonicorn")
+    ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+    """
     #triple_word = (lambda x: x+x+x)(word)
     #output = (word, triple_word)
 
+    # Creating triple function within triple_print function
     def triple(x):
         return x+x+x
 
+    # Creating tuple of the word and calling inner function
     output = (word, triple(word))
+
     return output
-
-#        Example:
-
-#        >>> outer("Balloonicorn")
-#        ('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
-
 
 ###############################################################################
 
