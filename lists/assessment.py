@@ -48,8 +48,9 @@ def print_indices(items):
     """
     # Creating a list of indices to print out
     index_list = sorted(range(0, len(items)), reverse = True)
+
     for word in items:
-        # Since index_list if reversed, popping out the numbers to print out
+        # Since index_list is reversed, popping out the numbers to print out
         print index_list.pop(), word
 
 def foods_in_common(foods1, foods2):
@@ -86,7 +87,7 @@ def foods_in_common(foods1, foods2):
         []
 
     """
-    # Combine two lists via set constructor and intersecting them
+    # Combines two lists via set constructor and intersects them
     common_list = list(set(foods1) & set(foods2))
 
     return sorted(common_list)
@@ -109,7 +110,7 @@ def every_other_item(items):
        ['you', 'are', 'good', 'at', 'code']
     """
     # Returning list of items slicing the item list with step of 2
-    return items[0::2]
+    return items[::2]
 
 
 def largest_n_items(items, n):
@@ -134,7 +135,7 @@ def largest_n_items(items, n):
         [3, 3]
     """
 
-    # Checking if the "nth" number is valid, returning empty list if <= 0
+    # Checking if the "nth" number is valid, returning empty list if n <= 0
     if n <= 0:
         return []
     else:

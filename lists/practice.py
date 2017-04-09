@@ -43,6 +43,7 @@ def long_words(words):
 
     # Creating list of words that are length greater than 4 chars
     long_word_list = [word for word in words if len(word) > 4]
+
     return long_word_list
 
 
@@ -62,6 +63,7 @@ def n_long_words(words, n):
     """
 
     long_word_list = [word for word in words if len(word) > n]
+
     return long_word_list
 
 
@@ -86,13 +88,17 @@ def smallest_int(numbers):
 
     smallest_num = None
 
+    # First check if it is an empty list
     if len(numbers) == 0:
         return smallest_num
     else:
+        # Assigning first number as the smallest then checking the rest
         smallest_num = numbers[0]
         i = 0
+        # Iterating through the rest of the numbers list and comparing
         while i < len(numbers)-1:
             i = i + 1
+            # Only changing the smallest number if it is larger than current one
             if smallest_num > numbers[i]:
                 smallest_num = numbers[i]
 
@@ -119,13 +125,17 @@ def largest_int(numbers):
     """
     largest_num = None
 
+    # First checking if it is an empty list
     if len(numbers) == 0:
         return largest_num
     else:
+        # Assigning first number as the largest then checking the rest
         largest_num = numbers[0]
         i = 0
+        # Iterating through the rest of the numbers list and comparing
         while i < len(numbers)-1:
             i = i + 1
+            # Only changing the largest number if it is smaller than current one
             if largest_num < numbers[i]:
                 largest_num = numbers[i]
 
@@ -180,8 +190,15 @@ def sum_numbers(numbers):
         >>> sum_numbers([])
         0
     """
+    # total = 0
+    # for num in numbers:
+    #     total = total + num
+    # return total
+
     # reduce(function, list)
     #reduce( (lambda x, y: x + y), numbers, 0)
+
+    # Using the reduce funciton rather than iterating through a for loop
     return reduce( (lambda x, y: x + y), numbers, 0)
 
 
@@ -251,6 +268,7 @@ def average(numbers):
     a feel free to provide a good solution here.)
     """
     
+    # Returning None if given an empty list
     if len(numbers) == 0:
         return None
     else:
@@ -281,9 +299,11 @@ def join_strings_with_comma(words):
     long_string = ""
 
     i = 0
+    # Looping through list of words and adding to string except last word
     while i < len(words)-1:
         long_string = long_string + words[i] + ", "
         i = i + 1
+    # Last word is added without comma
     long_string = long_string + words[len(words)-1]
     return long_string
 
@@ -310,11 +330,14 @@ def reverse_list(items):
         >>> orig
         ['apple', 'berry', 'cherry']
     """
-    reverse_items = []
-    i = len(items)-1
-    while i >= 0:
-        reverse_items.append(items[i])
-        i = i - 1
+    # reverse_items = []
+    # i = len(items)-1
+    # while i >= 0:
+    #     reverse_items.append(items[i])
+    #     i = i - 1
+
+    # Using slicing to make code simpler
+    reverse_items = items[::-1]
 
     return reverse_items
 
@@ -341,14 +364,17 @@ def reverse_list_in_place(items):
         >>> orig
         ['I', 'love', 'cookies']
     """
-    
+    # Two counters, one from front and one from end
     i = 0
     j = len(items) - 1
 
+    # Looks at first item and moves forward, looks at last item moves backwards
     while i >= 0 and i != j:
+        # temp place holder of an item to switch them around
         temp = items[i]
         items[i] = items[j]
         items[j] = temp
+        # stops switching items if counters are equal
         i = i + 1
         j = j - 1
 
@@ -385,6 +411,8 @@ def duplicates(items):
     # Then iterate through the rest of list to see if item is in the list
     i = 0
     while i < len(items)-1:
+        # Checking if the item is in the rest of the list and not already added
+        # into duplicate list
         if items[i] in items[i+1:] and items[i] not in duplicate_list: 
             duplicate_list.append(items[i])
             i += 1
@@ -437,6 +465,7 @@ def find_letter_indices(words, letter):
                 # If the letter appears in the word, add the position to list
                 if word[i] == letter:
                     index_list.append(i)
+                    # Breaks out of loop if letter is already found
                     found_index = True
                 i = i + 1
 
